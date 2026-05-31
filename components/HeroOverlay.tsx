@@ -1,122 +1,70 @@
 "use client";
 
-import { motion, useTransform, useSpring, MotionValue, useMotionValue } from "framer-motion";
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 
 type HeroOverlayProps = {
   progress: number;
 };
 
-const wordVariants = {
-  hidden: { opacity: 0, y: 18, filter: "blur(8px)" },
-  show: (index: number) => ({
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { delay: index * 0.08, duration: 0.9, ease: [0.16, 1, 0.3, 1] }
-  })
-};
-
-function useProgressMotion(progress: number) {
-  const rawProgress = useMotionValue(progress);
-  const springProgress = useSpring(rawProgress, { stiffness: 100, damping: 20, mass: 0.3 });
-
-  useEffect(() => {
-    rawProgress.set(progress);
-  }, [progress, rawProgress]);
-
-  return springProgress;
-}
-
-function OpacityBlock({
-  progressValue,
-  input,
-  output,
-  children,
-  className
-}: {
-  progressValue: MotionValue<number>;
-  input: number[];
-  output: number[];
-  children: React.ReactNode;
-  className: string;
-}) {
-  const opacity = useTransform(progressValue, input, output);
-  return (
-    <motion.div style={{ opacity }} className={className}>
-      {children}
-    </motion.div>
-  );
+function rangeOpacity(progress: number, points: [number, number, number, number]) {
+  const [fadeInStart, fullStart, fullEnd, fadeOutEnd] = points;
+  if (progress <= fadeInStart || progress >= fadeOutEnd) return 0;
+  if (progress >= fullStart && progress <= fullEnd) return 1;
+  if (progress < fullStart) return (progress - fadeInStart) / (fullStart - fadeInStart);
+  return 1 - (progress - fullEnd) / (fadeOutEnd - fullEnd);
 }
 
 export default function HeroOverlay({ progress }: HeroOverlayProps) {
-  const progressValue = useProgressMotion(progress);
-  const notes = useMemo(() => ["PINE", "OUD", "MUSK", "BERGAMOT"], []);
+  const notes = useMemo(() => ["PINE TAR", "OUD SMOKE", "BLACK MUSK", "WILD BERGAMOT"], []);
 
   return (
     <div className="pointer-events-none absolute inset-0 px-4 sm:px-8 lg:px-12">
-      <OpacityBlock
-        progressValue={progressValue}
-        input={[0, 0.16, 0.22]}
-        output={[1, 1, 0]}
-        className="absolute left-1/2 top-[12dvh] w-[min(76rem,92vw)] -translate-x-1/2 text-center"
+      <div
+        style={{ opacity: rangeOpacity(progress, [0, 0.02, 0.15, 0.24]) }}
+        className="absolute left-[7vw] top-[13dvh] w-[min(76rem,88vw)] transition-opacity duration-200"
       >
-        <motion.p
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-5 text-[0.65rem] font-medium uppercase tracking-[0.42em] text-white/48"
-        >
-          SILVANUS · FOREST ELIXIR · EAU DE PARFUM
-        </motion.p>
-        <h1 className="font-display text-[clamp(2.75rem,7vw,6.9rem)] font-medium uppercase leading-[0.88] tracking-[0.16em] text-white/[0.92]">
-          <span className="block">The Forest</span>
-          <span className="block">Holds Its Breath</span>
+        <p className="shadowed-type mb-5 max-w-[26rem] text-[0.62rem] font-semibold uppercase leading-relaxed tracking-[0.38em] text-bone/62">
+          SILVANUS Forest Elixir Eau de Parfum
+        </p>
+        <h1 className="shadowed-type text-balance font-display text-[clamp(3.15rem,15vw,11.5rem)] font-medium uppercase leading-[0.74] tracking-[0.025em] text-bone/[0.94] sm:tracking-[0.08em]">
+          <span className="block">Forest</span>
+          <span className="ml-[12vw] hidden italic tracking-[0.02em] text-gold/82 sm:block">Afterimage</span>
+          <span className="ml-[12vw] block italic tracking-[0.01em] text-gold/82 sm:hidden">After</span>
+          <span className="ml-[22vw] block italic tracking-[0.01em] text-gold/82 sm:hidden">image</span>
         </h1>
-      </OpacityBlock>
+      </div>
 
-      <OpacityBlock
-        progressValue={progressValue}
-        input={[0.42, 0.48, 0.61, 0.68]}
-        output={[0, 1, 1, 0]}
-        className="absolute left-[6vw] top-[37dvh] max-w-[40rem] mix-blend-screen"
+      <div
+        style={{ opacity: rangeOpacity(progress, [0.36, 0.45, 0.61, 0.7]) }}
+        className="absolute left-[7vw] top-[34dvh] max-w-[42rem] transition-opacity duration-200"
       >
-        <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} className="font-display uppercase text-white">
-          {["Born from", "Chaos."].map((line, index) => (
-            <motion.span
-              key={line}
-              custom={index}
-              variants={wordVariants}
-              className="block text-[clamp(3rem,7vw,7rem)] font-semibold italic leading-[0.82] tracking-[0.1em]"
-            >
+        <div className="shadowed-type font-display uppercase text-bone mix-blend-screen">
+          {["Green glass", "under pressure."].map((line) => (
+            <span key={line} className="block text-[clamp(2.7rem,13vw,7.8rem)] font-semibold italic leading-[0.78] tracking-[0.04em] sm:tracking-[0.07em]">
               {line}
-            </motion.span>
-          ))}
-        </motion.div>
-        <p className="mt-7 text-xs font-medium uppercase tracking-[0.36em] text-gold/80">Bottled for eternity.</p>
-      </OpacityBlock>
-
-      <OpacityBlock
-        progressValue={progressValue}
-        input={[0.68, 0.76, 0.9, 0.96]}
-        output={[0, 1, 1, 0]}
-        className="absolute bottom-8 right-4 max-w-[22rem] text-right sm:bottom-12 sm:right-10"
-      >
-        <div className="flex flex-wrap justify-end gap-x-3 gap-y-2">
-          {notes.map((note, index) => (
-            <motion.span
-              key={note}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.12, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-              className="text-[0.62rem] font-medium uppercase tracking-[0.34em] text-white/58"
-            >
-              {note}
-            </motion.span>
+            </span>
           ))}
         </div>
-      </OpacityBlock>
+        <p className="mt-7 max-w-[24rem] text-xs font-semibold uppercase leading-relaxed tracking-[0.32em] text-gold/72">
+          A volatile accord captured at the moment it refuses containment.
+        </p>
+      </div>
+
+      <div
+        style={{ opacity: rangeOpacity(progress, [0.66, 0.74, 0.92, 0.98]) }}
+        className="absolute bottom-8 right-4 max-w-[26rem] text-right transition-opacity duration-200 sm:bottom-12 sm:right-10"
+      >
+        <div className="flex flex-wrap justify-end gap-x-3 gap-y-2">
+          {notes.map((note) => (
+            <span
+              key={note}
+              className="glass-edge px-3 py-2 text-[0.58rem] font-semibold uppercase tracking-[0.26em] text-bone/66"
+            >
+              {note}
+            </span>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

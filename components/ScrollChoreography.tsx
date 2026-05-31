@@ -47,9 +47,9 @@ export default function ScrollChoreography() {
       });
 
       gsap.to("[data-drift='left']", {
-        xPercent: -10,
-        yPercent: 5,
-        rotation: -3,
+        xPercent: -2.5,
+        yPercent: 2,
+        rotation: -0.8,
         scrollTrigger: {
           trigger: "[data-drift-section]",
           start: "top bottom",
@@ -59,9 +59,9 @@ export default function ScrollChoreography() {
       });
 
       gsap.to("[data-drift='right']", {
-        xPercent: 12,
-        yPercent: -6,
-        rotation: 4,
+        xPercent: 2.5,
+        yPercent: -2,
+        rotation: 0.8,
         scrollTrigger: {
           trigger: "[data-drift-section]",
           start: "top bottom",

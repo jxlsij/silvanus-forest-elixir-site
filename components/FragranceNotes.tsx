@@ -57,7 +57,7 @@ export default function FragranceNotes() {
           </div>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-5 lg:grid-cols-[1.08fr_0.92fr_1.22fr]">
+        <div className="mt-12 grid grid-cols-1 gap-5 lg:grid-cols-[1.02fr_0.98fr_1.08fr]">
           {noteFamilies.map((family, familyIndex) => (
             <article
               key={family.title}
@@ -67,7 +67,7 @@ export default function FragranceNotes() {
               <div className="flex items-start justify-between gap-8">
                 <div>
                   <span className="micro-label text-gold/64">{family.accent}</span>
-                  <h3 className="mt-4 font-display text-[clamp(3rem,15vw,6.4rem)] font-medium italic leading-[0.78] text-bone">
+                  <h3 className="mt-4 font-display text-[clamp(3rem,14vw,5.8rem)] font-medium italic leading-[0.82] text-bone">
                     {family.title}
                   </h3>
                 </div>

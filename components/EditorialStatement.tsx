@@ -20,7 +20,7 @@ export default function EditorialStatement() {
         </div>
 
         <div className="self-center">
-          <p className="gsap-reveal text-balance font-display text-[clamp(3.35rem,15vw,11rem)] font-medium italic leading-[0.82] tracking-[0.01em] text-ink sm:tracking-[0.02em]">
+          <p className="gsap-reveal text-balance font-display text-[clamp(3.05rem,12vw,9.2rem)] font-medium italic leading-[0.88] tracking-[0.01em] text-ink sm:leading-[0.84] sm:tracking-[0.02em]">
             Not a scent. A controlled fracture in the memory of trees.
           </p>
 
@@ -29,9 +29,9 @@ export default function EditorialStatement() {
               The perfume begins as a polished object and ends as weather: splinters of bottle glass, pine resin suspended in amber, a bitter citrus spark, then the low animal warmth of musk.
             </p>
             <div className="gsap-reveal border-t border-ink/14 pt-5">
-              <p className="font-display text-7xl italic leading-none text-resin">121</p>
+              <p className="font-display text-7xl italic leading-none text-resin">120</p>
               <p className="micro-label mt-4 text-ink/48">
-                beats in the imagined film; 120 committed frames drive the live canvas sequence.
+                committed frames drive the live canvas sequence.
               </p>
             </div>
           </div>

@@ -29,12 +29,12 @@ export default function CTASection() {
       <div className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-[radial-gradient(circle_at_50%_0%,rgba(201,168,76,0.18),transparent_52%)]" />
 
       <div className="relative mx-auto max-w-[1440px]">
-        <div className="grid gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+        <div className="grid gap-14 lg:grid-cols-[1fr_0.92fr] lg:items-end">
           <div>
             <p className="gsap-reveal micro-label mb-8 text-gold/64">
               Forest Elixir / 100ml extrait
             </p>
-            <h2 className="gsap-reveal text-balance font-display text-[clamp(3.25rem,15vw,12rem)] font-medium uppercase leading-[0.72] tracking-[0.035em] text-bone sm:tracking-[0.055em]">
+            <h2 className="gsap-reveal text-balance font-display text-[clamp(2.85rem,12vw,9.25rem)] font-medium uppercase leading-[0.82] tracking-[0.015em] text-bone sm:leading-[0.76] sm:tracking-[0.04em]">
               Wear the
               <span className="block italic text-gold/82">wilderness</span>
             </h2>
@@ -58,9 +58,12 @@ export default function CTASection() {
 
             <a
               href="https://huggingface.co/spaces/amiasayedau/silvanus"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Reserve bottle on the SILVANUS Hugging Face Space"
               onMouseMove={onMouseMove}
               onMouseLeave={reset}
-              className="group mt-8 inline-flex w-full items-center justify-between gap-8 border border-gold/70 bg-gold px-6 py-5 text-left font-wide text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-ink transition duration-300 hover:bg-bone active:translate-y-px sm:w-auto sm:min-w-[21rem]"
+              className="group mt-8 inline-flex w-full items-center justify-between gap-8 border border-gold/70 bg-gold px-6 py-5 text-left font-wide text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-ink transition duration-300 hover:bg-bone focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold active:translate-y-px sm:w-auto sm:min-w-[21rem]"
             >
               <span className="inline-flex items-center gap-3">
                 <BagSimple size={18} weight="bold" />

@@ -4,7 +4,7 @@ export default function EditorialStatement() {
   return (
     <section id="ritual" className="relative overflow-hidden bg-bone text-ink">
       <div data-marquee className="border-y border-ink/10 py-4">
-        <div data-marquee-track className="flex w-[200%] gap-8 whitespace-nowrap text-[0.62rem] font-bold uppercase tracking-[0.34em] text-ink/42">
+        <div data-marquee-track className="micro-label flex w-[200%] gap-8 whitespace-nowrap text-ink/42">
           {[...fragments, ...fragments, ...fragments, ...fragments].map((fragment, index) => (
             <span key={`${fragment}-${index}`}>{fragment}</span>
           ))}
@@ -13,10 +13,10 @@ export default function EditorialStatement() {
 
       <div className="mx-auto grid min-h-[100dvh] max-w-[1440px] grid-cols-1 gap-12 px-4 py-24 sm:px-8 lg:grid-cols-[0.78fr_1.22fr] lg:px-12 lg:py-32">
         <div className="gsap-reveal flex flex-col justify-between border-l border-ink/12 pl-5">
-          <p className="max-w-[19rem] text-[0.66rem] font-bold uppercase leading-relaxed tracking-[0.34em] text-ink/48">
+          <p className="micro-label max-w-[19rem] text-ink/48">
             Maison note, archived from a laboratory that never opened to daylight.
           </p>
-          <p className="mt-20 text-[0.62rem] font-bold uppercase tracking-[0.3em] text-resin/80">Batch SFE-04 / Paris</p>
+          <p className="micro-label mt-20 text-resin/80">Batch SFE-04 / Paris</p>
         </div>
 
         <div className="self-center">
@@ -30,7 +30,7 @@ export default function EditorialStatement() {
             </p>
             <div className="gsap-reveal border-t border-ink/14 pt-5">
               <p className="font-display text-7xl italic leading-none text-resin">121</p>
-              <p className="mt-4 text-[0.62rem] font-bold uppercase leading-relaxed tracking-[0.28em] text-ink/48">
+              <p className="micro-label mt-4 text-ink/48">
                 beats in the imagined film; 120 committed frames drive the live canvas sequence.
               </p>
             </div>

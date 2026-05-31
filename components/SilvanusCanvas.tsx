@@ -25,6 +25,22 @@ export default function SilvanusCanvas() {
 
   const sources = useMemo(() => Array.from({ length: FRAME_COUNT }, (_, index) => `/sequence/frame_${index}.jpg`), []);
 
+  useEffect(() => {
+    const setViewportUnit = () => {
+      const viewportHeight = window.visualViewport?.height || window.innerHeight;
+      document.documentElement.style.setProperty("--silvanus-vh", `${viewportHeight * 0.01}px`);
+    };
+
+    setViewportUnit();
+    window.visualViewport?.addEventListener("resize", setViewportUnit);
+    window.addEventListener("resize", setViewportUnit);
+
+    return () => {
+      window.visualViewport?.removeEventListener("resize", setViewportUnit);
+      window.removeEventListener("resize", setViewportUnit);
+    };
+  }, []);
+
   const resizeCanvas = useCallback(() => {
     const canvas = canvasRef.current;
     const container = stickyRef.current;
@@ -136,8 +152,8 @@ export default function SilvanusCanvas() {
   }, [canvasSize, draw, loaded, progress]);
 
   return (
-    <section id="sequence" ref={wrapperRef} className="relative h-[430dvh] bg-void" aria-label="SILVANUS Forest Elixir bottle sequence">
-      <div ref={stickyRef} className="sticky top-0 h-[100dvh] w-full overflow-hidden bg-void">
+    <section id="sequence" ref={wrapperRef} className="sequence-scroll relative bg-void" aria-label="SILVANUS Forest Elixir bottle sequence">
+      <div ref={stickyRef} className="sequence-sticky sticky top-0 w-full overflow-hidden bg-void">
         <canvas
           ref={canvasRef}
           className="absolute inset-0 h-full w-full will-change-transform"
@@ -146,7 +162,7 @@ export default function SilvanusCanvas() {
 
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(191,203,168,0.08),transparent_34%),linear-gradient(90deg,rgba(6,7,8,0.44),transparent_24%,transparent_70%,rgba(6,7,8,0.52))]" />
 
-        <div className="pointer-events-none absolute right-[6vw] top-[16dvh] hidden w-[14rem] border-t border-bone/14 pt-4 text-right text-[0.58rem] font-semibold uppercase leading-relaxed tracking-[0.32em] text-bone/36 md:block">
+        <div className="micro-label pointer-events-none absolute right-[6vw] top-[16dvh] hidden w-[14rem] border-t border-bone/14 pt-4 text-right text-bone/36 md:block">
           Scroll distillation
           <span className="mt-2 block text-gold/54">120 exposed frames</span>
         </div>
@@ -161,10 +177,10 @@ export default function SilvanusCanvas() {
         {!loaded && (
           <div className="absolute inset-0 flex items-end bg-void/92">
             <div className="mb-10 ml-auto mr-6 w-[min(24rem,calc(100vw-3rem))] sm:mr-10">
-              <p className="mb-4 text-[0.62rem] font-semibold uppercase tracking-[0.34em] text-bone/46">Composing forest elixir</p>
+              <p className="micro-label mb-4 text-bone/46">Composing forest elixir</p>
               <div className="relative h-[2px] w-full overflow-hidden bg-white/5">
-              <div className="h-full bg-gold transition-[width] duration-300" style={{ width: `${Math.round(loadProgress * 100)}%` }} />
-              <div className="absolute inset-y-0 left-0 w-1/3 animate-shimmer bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+                <div className="h-full bg-gold transition-[width] duration-300" style={{ width: `${Math.round(loadProgress * 100)}%` }} />
+                <div className="absolute inset-y-0 left-0 w-1/3 animate-shimmer bg-gradient-to-r from-transparent via-white/30 to-transparent" />
               </div>
             </div>
           </div>

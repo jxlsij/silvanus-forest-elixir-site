@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Space_Grotesk } from "next/font/google";
+import { Cormorant_Garamond, Space_Grotesk, Unbounded } from "next/font/google";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -16,6 +16,13 @@ const spaceGrotesk = Space_Grotesk({
   weight: ["400", "500", "600", "700"]
 });
 
+const unbounded = Unbounded({
+  subsets: ["latin"],
+  variable: "--font-unbounded",
+  display: "swap",
+  weight: ["400", "500", "600", "700"]
+});
+
 export const metadata: Metadata = {
   title: "SILVANUS | Forest Elixir",
   description: "A cinematic fragrance landing page for SILVANUS Forest Elixir Eau de Parfum."
@@ -27,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${spaceGrotesk.variable}`}>
+    <html lang="en" className={`${cormorant.variable} ${spaceGrotesk.variable} ${unbounded.variable}`}>
       <body>{children}</body>
     </html>
   );

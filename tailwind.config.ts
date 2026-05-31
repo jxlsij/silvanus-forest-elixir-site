@@ -15,7 +15,8 @@ const config: Config = {
       },
       fontFamily: {
         display: ["var(--font-cormorant)", "Cormorant Garamond", "serif"],
-        sans: ["var(--font-space-grotesk)", "Space Grotesk", "system-ui", "sans-serif"]
+        sans: ["var(--font-space-grotesk)", "Space Grotesk", "system-ui", "sans-serif"],
+        wide: ["var(--font-unbounded)", "Unbounded", "system-ui", "sans-serif"]
       },
       keyframes: {
         "mist-rise": {

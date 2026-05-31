@@ -31,7 +31,7 @@ export default function CTASection() {
       <div className="relative mx-auto max-w-[1440px]">
         <div className="grid gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
           <div>
-            <p className="gsap-reveal mb-8 text-[0.62rem] font-semibold uppercase tracking-[0.4em] text-gold/64">
+            <p className="gsap-reveal micro-label mb-8 text-gold/64">
               Forest Elixir / 100ml extrait
             </p>
             <h2 className="gsap-reveal text-balance font-display text-[clamp(3.25rem,15vw,12rem)] font-medium uppercase leading-[0.72] tracking-[0.035em] text-bone sm:tracking-[0.055em]">
@@ -48,11 +48,11 @@ export default function CTASection() {
             <div className="mt-8 grid grid-cols-2 border-y border-bone/12">
               <div className="border-r border-bone/12 py-5 pr-5">
                 <p className="font-display text-5xl italic leading-none text-bone">280</p>
-                <p className="mt-3 text-[0.58rem] font-semibold uppercase tracking-[0.28em] text-bone/42">EUR</p>
+                <p className="micro-label mt-3 text-bone/42">EUR</p>
               </div>
               <div className="py-5 pl-5">
                 <p className="font-display text-5xl italic leading-none text-bone">47</p>
-                <p className="mt-3 text-[0.58rem] font-semibold uppercase tracking-[0.28em] text-bone/42">day maceration</p>
+                <p className="micro-label mt-3 text-bone/42">day maceration</p>
               </div>
             </div>
 
@@ -60,7 +60,7 @@ export default function CTASection() {
               href="https://huggingface.co/spaces/amiasayedau/silvanus"
               onMouseMove={onMouseMove}
               onMouseLeave={reset}
-              className="group mt-8 inline-flex w-full items-center justify-between gap-8 border border-gold/70 bg-gold px-6 py-5 text-left text-[0.72rem] font-bold uppercase tracking-[0.28em] text-ink transition duration-300 hover:bg-bone active:translate-y-px sm:w-auto sm:min-w-[21rem]"
+              className="group mt-8 inline-flex w-full items-center justify-between gap-8 border border-gold/70 bg-gold px-6 py-5 text-left font-wide text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-ink transition duration-300 hover:bg-bone active:translate-y-px sm:w-auto sm:min-w-[21rem]"
             >
               <span className="inline-flex items-center gap-3">
                 <BagSimple size={18} weight="bold" />
@@ -73,7 +73,7 @@ export default function CTASection() {
 
         <div data-cta-line className="mt-20 h-px w-full bg-gold/40" />
 
-        <div className="mt-8 grid gap-5 text-[0.62rem] font-semibold uppercase leading-relaxed tracking-[0.26em] text-bone/38 md:grid-cols-[1fr_1.2fr_0.8fr]">
+        <div className="micro-label mt-8 grid gap-5 text-bone/38 md:grid-cols-[1fr_1.2fr_0.8fr]">
           <p className="gsap-reveal inline-flex items-center gap-3">
             <SealCheck size={16} weight="regular" className="text-gold/70" />
             SILVANUS Parfums, Paris

@@ -31,7 +31,7 @@ export default function FragranceNotes() {
       <div className="mx-auto max-w-[1440px]">
         <div className="grid gap-10 border-y border-bone/12 py-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20 lg:py-16">
           <div className="gsap-reveal">
-            <p className="mb-5 text-[0.62rem] font-semibold uppercase tracking-[0.42em] text-gold/64">Olfactive architecture</p>
+            <p className="micro-label mb-5 text-gold/64">Olfactive architecture</p>
             <h2 className="text-balance font-display text-[clamp(3.05rem,16vw,10.4rem)] font-medium uppercase leading-[0.76] tracking-[0.035em] text-bone sm:tracking-[0.06em]">
               Three
               <span className="block italic text-gold/82">terrains</span>
@@ -45,12 +45,12 @@ export default function FragranceNotes() {
             <div className="gsap-reveal glass-edge p-5">
               <div className="flex items-end justify-between gap-8">
                 <span className="font-display text-6xl italic leading-none text-bone/84">18%</span>
-                <span className="max-w-[9rem] text-right text-[0.58rem] font-semibold uppercase leading-relaxed tracking-[0.24em] text-bone/44">
+                <span className="micro-label max-w-[9rem] text-right text-bone/44">
                   extrait concentration
                 </span>
               </div>
               <div className="mt-5 h-px bg-bone/12" />
-              <p className="mt-5 text-[0.62rem] font-semibold uppercase leading-relaxed tracking-[0.26em] text-gold/62">
+              <p className="micro-label mt-5 text-gold/62">
                 macerated in black glass for 47 days
               </p>
             </div>
@@ -66,12 +66,12 @@ export default function FragranceNotes() {
             >
               <div className="flex items-start justify-between gap-8">
                 <div>
-                  <span className="text-[0.58rem] font-bold uppercase tracking-[0.34em] text-gold/64">{family.accent}</span>
+                  <span className="micro-label text-gold/64">{family.accent}</span>
                   <h3 className="mt-4 font-display text-[clamp(3rem,15vw,6.4rem)] font-medium italic leading-[0.78] text-bone">
                     {family.title}
                   </h3>
                 </div>
-                <span className="text-[0.64rem] font-semibold uppercase tracking-[0.3em] text-bone/32">{family.index}</span>
+                <span className="font-wide text-[0.64rem] font-medium uppercase tracking-[0.18em] text-bone/32">{family.index}</span>
               </div>
 
               <p className="mt-12 max-w-[25rem] text-sm leading-relaxed text-bone/54">{family.copy}</p>
@@ -79,7 +79,7 @@ export default function FragranceNotes() {
               <ul className="mt-12 space-y-4">
                 {family.notes.map((note) => (
                   <li key={note} className="flex items-center justify-between gap-5 border-t border-bone/10 pt-4">
-                    <span className="text-[0.66rem] font-semibold uppercase tracking-[0.26em] text-bone/58">{note}</span>
+                    <span className="font-wide text-[0.58rem] font-medium uppercase tracking-[0.16em] text-bone/58">{note}</span>
                     <span className="h-2 w-2 rounded-full bg-gold/54 transition duration-500 group-hover:scale-150" />
                   </li>
                 ))}

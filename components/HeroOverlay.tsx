@@ -23,7 +23,7 @@ export default function HeroOverlay({ progress }: HeroOverlayProps) {
         style={{ opacity: rangeOpacity(progress, [0, 0.02, 0.15, 0.24]) }}
         className="absolute left-[7vw] top-[13dvh] w-[min(76rem,88vw)] transition-opacity duration-200"
       >
-        <p className="shadowed-type mb-5 max-w-[26rem] text-[0.62rem] font-semibold uppercase leading-relaxed tracking-[0.38em] text-bone/62">
+        <p className="micro-label shadowed-type mb-5 max-w-[26rem] text-bone/62">
           SILVANUS Forest Elixir Eau de Parfum
         </p>
         <h1 className="shadowed-type text-balance font-display text-[clamp(3.15rem,15vw,11.5rem)] font-medium uppercase leading-[0.74] tracking-[0.025em] text-bone/[0.94] sm:tracking-[0.08em]">
@@ -45,7 +45,7 @@ export default function HeroOverlay({ progress }: HeroOverlayProps) {
             </span>
           ))}
         </div>
-        <p className="mt-7 max-w-[24rem] text-xs font-semibold uppercase leading-relaxed tracking-[0.32em] text-gold/72">
+        <p className="micro-label mt-7 max-w-[24rem] text-gold/72">
           A volatile accord captured at the moment it refuses containment.
         </p>
       </div>
@@ -58,7 +58,7 @@ export default function HeroOverlay({ progress }: HeroOverlayProps) {
           {notes.map((note) => (
             <span
               key={note}
-              className="glass-edge px-3 py-2 text-[0.58rem] font-semibold uppercase tracking-[0.26em] text-bone/66"
+              className="micro-label glass-edge px-3 py-2 text-bone/66"
             >
               {note}
             </span>

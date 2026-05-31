@@ -18,18 +18,32 @@ export default function ScrollChoreography() {
     const context = gsap.context(() => {
       gsap.defaults({ ease: "power3.out", duration: 1 });
 
-      ScrollTrigger.batch(".gsap-reveal", {
-        start: "top 82%",
-        once: true,
-        interval: 0.08,
-        batchMax: 5,
-        onEnter: (batch) => {
-          gsap.fromTo(
-            batch,
-            { autoAlpha: 0, y: 34, filter: "blur(12px)" },
-            { autoAlpha: 1, y: 0, filter: "blur(0px)", stagger: 0.11, overwrite: "auto" }
-          );
-        }
+      gsap.utils.toArray<HTMLElement>(".gsap-reveal").forEach((element, index) => {
+        const distance = index % 3 === 0 ? 44 : index % 3 === 1 ? 28 : 36;
+
+        const reveal = gsap.fromTo(
+          element,
+          { autoAlpha: 0, y: distance, filter: "blur(14px)" },
+          {
+            autoAlpha: 1,
+            y: 0,
+            filter: "blur(0px)",
+            ease: "none",
+            paused: true
+          }
+        );
+
+        ScrollTrigger.create({
+          trigger: element,
+          start: "top 92%",
+          end: "top 66%",
+          scrub: 0.65,
+          invalidateOnRefresh: true,
+          onUpdate: (self) => reveal.progress(self.progress),
+          onRefresh: (self) => reveal.progress(self.progress),
+          onLeave: () => reveal.progress(1),
+          onLeaveBack: () => reveal.progress(0)
+        });
       });
 
       gsap.to("[data-drift='left']", {
@@ -72,15 +86,17 @@ export default function ScrollChoreography() {
         { scaleX: 0, transformOrigin: "left center" },
         {
           scaleX: 1,
-          duration: 1.2,
-          ease: "power3.inOut",
+          ease: "none",
           scrollTrigger: {
             trigger: "[data-cta-line]",
-            start: "top 76%",
-            once: true
+            start: "top 88%",
+            end: "top 54%",
+            scrub: 0.7
           }
         }
       );
+
+      ScrollTrigger.refresh();
     });
 
     return () => context.revert();

@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  background: #060708;
+  --gold: #c9a84c;
+  --void: #060708;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #060708;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100dvh;
+  margin: 0;
+  overflow-x: hidden;
+  background: #060708;
+  color: rgba(255, 255, 255, 0.92);
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  text-rendering: geometricPrecision;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: rgba(201, 168, 76, 0.28);
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.noise::after {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  opacity: 0.05;
+  background-image: radial-gradient(circle at 30% 10%, rgba(255, 255, 255, 0.2) 0 1px, transparent 1px);
+  background-size: 3px 3px;
+  mix-blend-mode: screen;
+}

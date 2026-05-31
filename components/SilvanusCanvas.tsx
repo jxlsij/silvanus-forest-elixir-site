@@ -57,11 +57,11 @@ export default function SilvanusCanvas() {
       let drawHeight = canvas.height;
 
       if (canvasAspect > FRAME_ASPECT) {
-        drawHeight = canvas.height;
-        drawWidth = drawHeight * FRAME_ASPECT;
-      } else {
         drawWidth = canvas.width;
         drawHeight = drawWidth / FRAME_ASPECT;
+      } else {
+        drawHeight = canvas.height;
+        drawWidth = drawHeight * FRAME_ASPECT;
       }
 
       const x = (canvas.width - drawWidth) / 2;
